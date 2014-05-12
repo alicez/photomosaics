@@ -31,7 +31,7 @@ def euclidean_distance(a, b):
 def most_similar_image(im):
 	img_color = colors.average_color(im)
 	min_dist = float("inf")
-	img_holder = None
+	img = None
 	for i in range(len(average_colors)):
 		col = average_colors[i]
 		dist = euclidean_distance(col, img_color)
