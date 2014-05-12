@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1.0in]{geometry}
+
+% Math packages
+\usepackage{mathtools} % makes amsmath unnecessary
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+
+% For tables
+\usepackage{multirow}
+\usepackage{hhline}
+
+% Header packages
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Theorems
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+\lhead{Alice Zhang}
+\chead{COS 435}
+\rhead{Writeup}
+\cfoot{}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\title{Creating Image Photomosaics}
+\date{\today}
+\author{Alice Zhang}
+
+\maketitle
+
+\section{Introduction}
+Photomosaics are a recent trend in photography that create one large image out of many smaller images. The larger image is spliced into many small ones and The goal of this final project was to use image processing in order to make beautiful image mosaics. The project required several stages of implementation.
+
+\section{Software}
+I used the MIR FLICKR dataset of images, which is a dataset of images from Flickr. Because of limited disk space, I only used the first 25,000 of the Flickr dataset, which contains 1 million images. I also used the Python scikit-image library, which contains tools for image processing, and PIL (Python Imaging Library). The scipy-cluster library was used for clustering because it provided the implementation for agglomerative clustering, and could also print dendrograms.
+
+\section{Preprocessing}
+There is a lot of preprocessing that occurs. First, I calculated the average color of each of the 25,000 images from the MIR Flickr dataset. To speed up computation time, each of these images was resized to a 30 x 30 pixel square. Then, a blur was applied, followed by color quantization. These steps spread similar colors to out across the image. Finally, the average color of each image was calculated by finding the average red, green, and blue values across all pixels. This produced 25,000 color averages. 
+
+The next step of the preprocessing algorithm was to cluster these images, to decrease computational time when generating an input image. For instance, without clustering, it takes several minutes in order to generate an image. We used complete hierarchical linkage, clustering all the images into a total of 1000 clusters. 
+
+\section{Algorithm}
+The image is cut into smaller sections. In each subimage, the average color was found by the same method used in preprocessing (reducing it to a 30 x 30 pixel square, applying a blur and then 256-level color quantization). T 
+
+\end{document}
