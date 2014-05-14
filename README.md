@@ -11,4 +11,6 @@ mv images*/* images
 2) Run in the following manner: 
 
 python processing.py
+
+
 python mosaics.py {file name of image} {pixel size of tiles}
